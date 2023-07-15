@@ -88,7 +88,7 @@ public:
         }
     }
 
-    int findLargest(int k = 1) {
+    int findGreatest(int k = 1) {
         int ans = 0;
         Node *curNode = root;
         for (int i = N; i >= 0; i--) {
@@ -104,7 +104,7 @@ public:
         return ans;
     }
 
-    void eraseLargest(int k = 1) {
+    void eraseGreatest(int k = 1) {
         Node *curNode = root;
         for (int i = N; i >= 0; i--) {
             int right = (curNode->childNode[1] ? curNode->childNode[1]->count : 0);
@@ -116,13 +116,13 @@ public:
         }
     }
 
-    int countGreater(int x, int y = 0) {
+    int countSmaller(int x, int y = 0) {
         int ans = 0;
         Node *curNode = root;
         for (int i = N; i >= 0; i--) {
             bool k = (x & (1LL << i));
 
-            if (k == 0 && curNode->childNode[1]) ans += curNode->childNode[1]->count;
+            if (k == 1 && curNode->childNode[0]) ans += curNode->childNode[0]->count;
 
             if (curNode->childNode[k] == NULL) break;
             curNode = curNode->childNode[k];
@@ -131,13 +131,13 @@ public:
         return ans + (y == 1 ? curNode->count : 0);
     }
 
-    int countSmaller(int x, int y = 0) {
+    int countGreater(int x, int y = 0) {
         int ans = 0;
         Node *curNode = root;
         for (int i = N; i >= 0; i--) {
             bool k = (x & (1LL << i));
 
-            if (k == 1 && curNode->childNode[0]) ans += curNode->childNode[0]->count;
+            if (k == 0 && curNode->childNode[1]) ans += curNode->childNode[1]->count;
 
             if (curNode->childNode[k] == NULL) break;
             curNode = curNode->childNode[k];
