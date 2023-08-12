@@ -124,7 +124,7 @@ public:
 
             if (k == 1 && curNode->childNode[0]) ans += curNode->childNode[0]->count;
 
-            if (curNode->childNode[k] == NULL) break;
+            if (curNode->childNode[k] == NULL) return ans;
             curNode = curNode->childNode[k];
         }
 
@@ -139,7 +139,7 @@ public:
 
             if (k == 0 && curNode->childNode[1]) ans += curNode->childNode[1]->count;
 
-            if (curNode->childNode[k] == NULL) break;
+            if (curNode->childNode[k] == NULL) return ans;
             curNode = curNode->childNode[k];
         }
 
